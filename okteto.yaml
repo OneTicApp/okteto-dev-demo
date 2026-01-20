@@ -6,9 +6,9 @@ dev:
     imagePullPolicy: IfNotPresent  # 强制要求：如果本地有，就不去外网拉取
     persistentVolume:
       enabled: false  # 禁用持久化卷挂载
+    command: ["node", "index.js"] # 启动时直接运行 node index.js
     sync:
       - .:/usr/src/app
 
     initContainer:
-      # 使用阿里云或其他国内镜像源
-      image: dockerproxy.net/okteto/okteto:3.15.0
+      image: dockerproxy.net/okteto/okteto:3.15.0 # 使用阿里云或其他国内镜像源
