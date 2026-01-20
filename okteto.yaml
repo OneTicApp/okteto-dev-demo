@@ -1,0 +1,14 @@
+name: my-app
+dev:
+  my-app:
+    autocreate: true
+    image: dockerproxy.net/okteto/node:18
+    imagePullPolicy: IfNotPresent  # 强制要求：如果本地有，就不去外网拉取
+    persistentVolume:
+      enabled: false  # 禁用持久化卷挂载
+    sync:
+      - .:/usr/src/app
+
+    initContainer:
+      # 使用阿里云或其他国内镜像源
+      image: dockerproxy.net/okteto/okteto:3.15.0
